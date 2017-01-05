@@ -13,39 +13,55 @@ public class LinkSandboxServerManager
         Close,
         none,
     }
-    public ServerState MyServerState { get; set; }
+    public ServerState myServerState { get; set; }//服务器状态
+    private static readonly object lockHelper = new object();
     public static  LinkSandboxServerManager _Server
     {
         get
         {
-            if (_server==null)
+            lock (lockHelper)
             {
-                _server = new LinkSandboxServerManager();
+                if (_server == null)
+                {
+                    _server = new LinkSandboxServerManager();
+                }
             }
 
             return _server;
         }
-    }
-    private int ClinkPort = 7788;
-    private IPAddress ClinkIP;
-    private   Socket ServerSocket;
-    private int ServerPort = 8080;
-    private  IPAddress ServerIPAdress;
+    }//单例化
+    private int clientPort;//客户端端口
+    private IPAddress clientIP;
+    private   Socket serverSocket;
+    private Socket clientSocket;
+    public int serverPort { get; set; }
+    public IPAddress serverIPAdress { get; set; }
     private static LinkSandboxServerManager _server=new LinkSandboxServerManager ();
-    private Thread listenClink;
+    private Thread listenClientThread;
+    private Thread accpetClientThread;
     private byte[] receiveData;
+   
     // Use this for initialization
 
     private   LinkSandboxServerManager()
     {
         Debug.Log("ss");
-        MyServerState = ServerState.Initialize;
-        ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        ServerIPAdress = GetIPV4();
-        ServerSocket.Bind(new IPEndPoint(ServerIPAdress, ServerPort));
-        listenClink = new Thread(ReceiveFromClink);
+        myServerState = ServerState.Initialize;
+        serverPort = 8080;
+        serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        serverIPAdress = GetIPV4();
+        serverSocket.Bind(new IPEndPoint(serverIPAdress, serverPort));
+        receiveData = new byte[7];
+        serverSocket.Listen(1);
+        listenClientThread = new Thread(listinClink);
+        accpetClientThread = new Thread(AcceptClient);
+        myServerState = ServerState.Run;
+        accpetClientThread.Start();
+        
 
     }
+
+
     private IPAddress GetIPV4()
     {
         IPAddress A = null;
@@ -61,38 +77,61 @@ public class LinkSandboxServerManager
         return A;
 
     }
-    private void StarRunning()
-    {
-        try
-        {
-            ServerSocket.Connect(new IPEndPoint(ClinkIP, ClinkPort));
-            listenClink.Start();
-            MyServerState = ServerState.Run;
-            Debug.Log("Star");
-        }
-        catch
-        {
+    //private void StarRunning()
+    //{
+    //    try
+    //    {
+    //        serverSocket.Connect(new IPEndPoint(clientIP, clientPort));
+    //        listenClientThread.Start();
+    //        myServerState = ServerState.Run;
+    //        Debug.Log("Star");
+    //    }
+    //    catch
+    //    {
 
-            Debug.Log("CantFindClink");
+    //        Debug.Log("CantFindClient");
+            
+    //    }
 
-        }
+    //}
 
-    }
-    private void ReceiveFromClink()
+
+    /// <summary>
+    /// 接收客户端
+    /// </summary>
+    private void AcceptClient()
     {
         while (true)
         {
-            if (MyServerState == ServerState.Run)
+            Debug.Log("NUllClient");
+            if (myServerState == ServerState.Run)
             {
-                ServerSocket.Receive(receiveData);
+                
+                clientSocket = serverSocket.Accept();
+                if (clientSocket!=null)
+                {
+                    Debug.Log("Accpet");
+                    listenClientThread.Start();
+                   
+                }
             }
             else
             {
-                listenClink.Abort();
+                Debug.Log("destoryAccpet");
+                //accpetClientThread.Abort();
             }
         }
     }
-    public void ChangeClinkIP(string ip)
+
+
+    private void listinClink()
+    {
+        while (true)
+        {
+            clientSocket.Receive(receiveData);
+        }
+    }
+    public void ChangeclientIP(string ip)
     {
         try
         {
@@ -105,21 +144,34 @@ public class LinkSandboxServerManager
 
         }
     }
-    public void ChangeClinkPort(string port)
+    public void ChangeclientPort(string port)
     {
-        int temp = int.Parse(port);
-        if (temp > 600&& temp<10000)
+        Debug.Log(port);
+        if (port!= "")
         {
-            ClinkPort = temp;
+            int temp = int.Parse(port);
+            if (temp > 1023 && temp < 65535)
+            {
+                clientPort = temp;
+            }
+            
         }
         
+        
     }
-    public void LinkClinkRequest()
+    public void ChangeclientPort(int port)
     {
-        if (ClinkIP != null && MyServerState == ServerState.Initialize)
+        if (port  > 1023 && port < 65535)
         {
-
-            StarRunning();
+            clientPort = port;
         }
     }
+    //public void LinkClientRequest()
+    //{
+    //    if (clientIP != null && myServerState == ServerState.Initialize)
+    //    {
+
+    //        StarRunning();
+    //    }
+    //}
 }

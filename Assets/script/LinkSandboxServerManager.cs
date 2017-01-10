@@ -6,6 +6,8 @@ using System.Threading;
 
 public class LinkSandboxServerManager
 {
+    public delegate void ServerSendData();
+    //public event 
     public enum ServerState
     {
         Initialize,
@@ -39,7 +41,7 @@ public class LinkSandboxServerManager
     private static LinkSandboxServerManager _server=new LinkSandboxServerManager ();
     private Thread listenClientThread;
     private Thread accpetClientThread;
-    private byte[] receiveData;
+    private byte[] receiveData=new byte [9];
    
     // Use this for initialization
 
@@ -50,9 +52,10 @@ public class LinkSandboxServerManager
         serverPort = 8080;
         serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         serverIPAdress = GetIPV4();
+        //serverSocket.Listen(1);
         serverSocket.Bind(new IPEndPoint(serverIPAdress, serverPort));
         receiveData = new byte[7];
-        serverSocket.Listen(1);
+       
         listenClientThread = new Thread(listinClink);
         accpetClientThread = new Thread(AcceptClient);
         myServerState = ServerState.Run;
@@ -165,6 +168,22 @@ public class LinkSandboxServerManager
         {
             clientPort = port;
         }
+    }
+    public void SendData(byte[] SendData)
+    {
+        try
+        {
+            clientSocket.Send(SendData);
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+    private void sendData(byte[] sendData)
+    {
+
     }
     //public void LinkClientRequest()
     //{

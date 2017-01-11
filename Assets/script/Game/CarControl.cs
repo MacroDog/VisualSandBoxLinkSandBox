@@ -16,7 +16,9 @@ public class CarControl : MonoBehaviour
     private float carSpeed;
     private float carOffset = 0.05f;
     [SerializeField]
-    //private ClickPoint 
+    public int CarId { get; set; }
+    //[SerializeField]
+    //private ClickPoint asd;
     // Use this for initialization
     void Start()
     {
@@ -27,16 +29,18 @@ public class CarControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myCarState == CarState.Run)
-        {
-            float distence = Vector3.Distance(this.transform.position, carDestination.position);
-            if (distence <= 0.05)
-            {
-                //changeCarState
-            }
+        //if (myCarState == CarState.Run)
+        //{
+        //    float distence = Vector3.Distance(this.transform.position, carDestination.position);
+        //    if (distence <= 0.05)
+        //    {
+        //        //changeCarState
+        //    }
 
-        }
+        //}
     }
+
+
    /// <summary>
    /// 改变小车itween目的地
    /// </summary>
@@ -50,12 +54,16 @@ public class CarControl : MonoBehaviour
                                             "easetype", iTween.EaseType.linear,
                                             "looktarget", carDestination));
     }
+
+
     /// <summary>
     ///改变小车位置用于校验位置 
     /// </summary>
     private void changeCarPostion(Vector3 postion)
     {
+
         this.transform.position = postion;
+
     }
 
     /// <summary>
@@ -83,7 +91,18 @@ public class CarControl : MonoBehaviour
 
 
     }
+    
 
+
+    /// <summary>
+    /// 通过指令改变小车
+    /// </summary>
+    public void CarInstructal(GetDataStructure Data)
+    {
+        //改变
+        //changeCarPostion()
+        //changeCarDestination()
+    }
 
 
     /// <summary>

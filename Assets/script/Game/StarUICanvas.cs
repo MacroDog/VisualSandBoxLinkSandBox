@@ -16,8 +16,8 @@ public class StarUICanvas : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ServerIp.text = LinkSandboxServerManager._Server.serverIPAdress.ToString();
-        serverPort.text = LinkSandboxServerManager._Server.serverPort.ToString();
+        //ServerIp.text = LinkSandboxServerManager._Server.serverIPAdress.ToString();
+        //serverPort.text = LinkSandboxServerManager._Server.serverPort.ToString();
         
     }
 

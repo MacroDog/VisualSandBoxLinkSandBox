@@ -2,16 +2,14 @@
 using System.Collections;
 using System.Net.Sockets;
 
-public class Conn : MonoBehaviour {
+public class Conn
+{
 
     private const int BUFFER_SIZE = 1024;//每个客户端收到信息缓存空间大小
     public Socket socket;
     public bool isUse { get; set; }
     public  byte[] readbuffer = new byte[BUFFER_SIZE];
     public int bufferCount = 0;
-
-
-
 
     public Conn()
     {
@@ -25,7 +23,6 @@ public class Conn : MonoBehaviour {
         isUse = true;
         //bufferCount;
     }
-
     //缓存区剩余容量
     public int BuffRamain()
     {
@@ -36,9 +33,6 @@ public class Conn : MonoBehaviour {
         if (isUse != true)
             return "无法获取地址";
         return socket.RemoteEndPoint.ToString();
-
-
-
     }
     public void Close()
     {
@@ -47,5 +41,12 @@ public class Conn : MonoBehaviour {
         Debug.Log("断开连接");
         socket.Close();
         isUse = false;
+    }
+    
+    //清理缓存区
+    public void ClearBuffer()
+    {
+        readbuffer = new byte[BUFFER_SIZE];
+        bufferCount = 0;
     }
 }

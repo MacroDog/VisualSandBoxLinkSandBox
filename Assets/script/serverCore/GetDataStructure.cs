@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GetDataStructure : MonoBehaviour
+public class GetDataStructure 
 {
     private byte head = 0xAA;
-    public int  carId { get; set; }
-    public byte STA { get; set; }
-    public int  NowLocate { get; set; }
-    public int NextLocate { get; set; }
-    public float speed { get; set; }
-    public byte CRCCheck { get; set; }
-    public byte tail { get; set; }
-    private byte[] DataFrame { get; set; }
+    public int  carId { get; private set; }
+    public byte STA { get; private set; }
+    public int  NowLocate { get; private set; }
+    public int NextLocate { get; private set; }
+    public float speed { get; private set; }
+    public byte CRCCheck { get; private set; }
+    public byte tail { get; private set; }
+    public byte[] DataFrame { get; private set; }
 
     public GetDataStructure(byte[] DataFrame)
     {
@@ -24,8 +24,12 @@ public class GetDataStructure : MonoBehaviour
             speed = System.BitConverter.ToInt32(DataFrame, 4);
             CRCCheck = DataFrame[5];
         }
-
+        else
+        {
+            Debug.Log("erron GetDataStructure");
+        }
     }
+   // public void 
 
 
 

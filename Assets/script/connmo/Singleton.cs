@@ -4,7 +4,7 @@ using System.Collections;
 public class Singleton<T> where T : class, new()
 {
     protected static T _instence = null;
-    protected static T Instence
+    public  static T Instence
     {
         get
         {

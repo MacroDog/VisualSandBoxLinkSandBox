@@ -49,4 +49,5 @@ public class Conn
         readbuffer = new byte[BUFFER_SIZE];
         bufferCount = 0;
     }
+    
 }

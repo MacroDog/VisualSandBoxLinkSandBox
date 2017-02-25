@@ -25,7 +25,10 @@ public class SendDataStructure
         
     }
 
+    //public byte[] sendByte()
+    //{
 
+    //}
 
     //public void User()
     //{

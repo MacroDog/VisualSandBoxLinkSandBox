@@ -23,22 +23,38 @@ public class LinkSandboxGameManage : MonoBehaviour {
             return _linkSandboxManage;
         }
     }
+    private bool dataNeedUpdata;
+    //public MovieTexture movoe;
+    //public static Serv ser { get; private set; }
     [SerializeField]
-    private CarControl[] Car;
-
+    private CarControl Car;
     
-
-    public void ReceiveServerInstruction(GetDataStructure Instruction)
+    
+    void Awake()
     {
-        CarControl ControlCar;
-        foreach (var item in Car)
-        {
-            if (item.CarId == Instruction.carId)
-            {
-                ControlCar = item;
-                item.CarInstructal(Instruction);
-            }
-        }
+        
+       
+        DontDestroyOnLoad(this);
         
     }
+    void Start()
+    {
+        Serv._Serv.receiveMessageEvent += new Serv.ReceiveMessageHandler(ReceiveServerInstruction);
+        //UIManager.Instence.OpenUI(EnumUIPlaneType.MoviePlay, false, null);
+
+    }
+    
+
+    public void ReceiveServerInstruction(object sender , ReceiveMessageArgs Instruction)
+    {
+
+        Debug.Log(Instruction.data);
+    }
+    
+   public void sendPushProtocol()
+    {
+        
+    }
+    
+   
 }

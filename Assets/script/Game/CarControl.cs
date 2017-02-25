@@ -15,29 +15,35 @@ public class CarControl : MonoBehaviour
     private iTween myCarControl;
     private float carSpeed;
     private float carOffset = 0.05f;
-    [SerializeField]
+   
     public int CarId { get; set; }
+    [SerializeField]
+    private CarWayPoint[] MyCarWayPoints =new CarWayPoint [19];
+    private int wayPointCounter=0;
+    //private Transform[] carways;
     //[SerializeField]
     //private ClickPoint asd;
     // Use this for initialization
     void Start()
     {
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (myCarState == CarState.Run)
-        //{
-        //    float distence = Vector3.Distance(this.transform.position, carDestination.position);
-        //    if (distence <= 0.05)
-        //    {
-        //        //changeCarState
-        //    }
-
-        //}
+        if (myCarState == CarState.Run)
+        {
+            float distence = Vector3.Distance(this.transform.position, carDestination.position);
+            if (distence <= 0.05)
+            {
+                if (wayPointCounter<WayPoint.Count)
+                {
+                    changeCarDestination(WayPoint[wayPointCounter++]);
+                }
+                //changeCarState
+            }
+        }
     }
 
 
@@ -46,7 +52,7 @@ public class CarControl : MonoBehaviour
    /// </summary>
     private void changeCarDestination(Transform s)
     {
-       
+        carDestination = s;
         iTween.MoveTo(this.gameObject, iTween.Hash("position", carDestination,
                                             "movetopath", true,
                                             "orienttopath", true,
@@ -59,13 +65,18 @@ public class CarControl : MonoBehaviour
     /// <summary>
     ///改变小车位置用于校验位置 
     /// </summary>
-    private void changeCarPostion(Vector3 postion)
+    private void changeCarPostion(CarWayPoint nowCarwayPoint ,CarWayPoint nextCarWayPoint)
     {
+        this.transform.position = nowCarwayPoint.transform.position;
+        WayPoint = nextCarWayPoint.getCarWay(nextCarWayPoint).returnWays(nextCarWayPoint);
+        wayPointCounter = 0;
+        carDestination = nowCarwayPoint.transform;
+        nowCarwayPoint.RunOnTrigger(this);
 
-        this.transform.position = postion;
+
 
     }
-
+   
     /// <summary>
     /// 改变小车状态
     /// </summary>
@@ -85,15 +96,17 @@ public class CarControl : MonoBehaviour
                 case CarState.Run:
                     myCarState = s;
                     break;
-
             }
         }
-
-
     }
     
+    /// <summary>
+    /// 初始化小车 回到原点，归零目标点
+    /// </summary>
+   private void initializeCar()
+    {
 
-
+    }
     /// <summary>
     /// 通过指令改变小车
     /// </summary>
@@ -104,13 +117,30 @@ public class CarControl : MonoBehaviour
         //changeCarDestination()
     }
 
-
-    /// <summary>
-    /// 初始化小车 回到原点，归零目标点
-    /// </summary>
-    private void initializeCar()
+    
+    //暂停运行 发送暂停命令
+    public void Push()
     {
-
+        SendDataProtocol send = new SendDataProtocol(this.CarId, 3);
+        Serv._Serv.SendMessage(send.SendData());
     }
+
+
+    //继续运行 发送运行命令
+    public void Continue()
+    {
+        SendDataProtocol send = new SendDataProtocol(this.CarId, 1);
+        Serv._Serv.SendMessage(send.SendData());
+    }
+    public CarWayPoint getCarWayPointById(int i)
+    {
+        CarWayPoint temp = null;
+        if (i<MyCarWayPoints.Length)
+        {
+            temp = MyCarWayPoints[i];
+        }
+        return temp;
+    }
+ 
     
 }

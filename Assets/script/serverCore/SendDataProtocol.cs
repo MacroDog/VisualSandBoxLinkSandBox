@@ -24,7 +24,7 @@ public class SendDataProtocol
         }
         if (carState >= 3)
         {
-            throw new Exception(":error carid from sendDataProtocol");
+            //throw new Exception(":error carid from sendDataProtocol");
         }
         else
         {

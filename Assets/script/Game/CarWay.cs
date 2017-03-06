@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CarWay : MonoBehaviour
 {
 
-    public CarWayPoint[] Carwaypoint = new CarWayPoint[2];
+    public CarWayPoint[] Carwaypoint = new CarWayPoint[2];//表示路段的两头)
     public Transform[] Ways;
     private Transform[] ways;
     private CarWayPoint[] carwaypoint = new CarWayPoint[2];

@@ -10,8 +10,9 @@ public class CommunationFaultClickPoint : CarWayPoint
     private CarControl player;
     public override void RunOnTrigger(CarControl carControl)
     {
+        Debug.Log("arrive CommunationFaultClickPoint");
         player = carControl;
-        carControl.Push();
+        carControl.Paush();
         PlayMovie();
     }
 
@@ -30,7 +31,7 @@ public class CommunationFaultClickPoint : CarWayPoint
     private void finishMoviePlay()
     {
         player.Continue();
-        UIManager.Instence.CloseUI(EnumUIPlaneType.MoviePlay);
+        //UIManager.Instence.CloseUI(EnumUIPlaneType.MoviePlay);
     }
     
 }

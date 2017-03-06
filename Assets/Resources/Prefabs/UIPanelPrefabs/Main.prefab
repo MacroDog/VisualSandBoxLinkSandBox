@@ -79,7 +79,7 @@ MonoBehaviour:
   ServerPort: {fileID: 0}
   RemoteIP: {fileID: 0}
   RemotePort: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 114000014286110614}
 --- !u!114 &114000012441945912
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+using UnityEngine.UI;
 public class MoviePlayUI : BaseUI {
 
 
@@ -9,7 +9,7 @@ public class MoviePlayUI : BaseUI {
     public finishMoviePlay EventHandler;
     public MovieTexture movie;
     private bool isplay;
-
+    public RawImage moviePlayer;
 	// Use this for initialization
 	void Start () {
 	
@@ -34,6 +34,7 @@ public class MoviePlayUI : BaseUI {
         if (movie!=null)
         {
             movie.Play();
+            Debug.Log("Start Play Movie");
             isplay = true;
         }
     }
@@ -41,13 +42,16 @@ public class MoviePlayUI : BaseUI {
     {
         base.OnLoadData();
         
-        palyerMovie();
-        Debug.Log("playmovie");
+       
+        
     }
     protected override void SetUI(params object[] UIParams)
     {
         base.SetUI(UIParams);
         movie = UIParams[0] as MovieTexture;
+        Debug.Log(movie.name);
+        moviePlayer.texture = movie;
+        palyerMovie();
 
     }
     protected override void OnRelease()

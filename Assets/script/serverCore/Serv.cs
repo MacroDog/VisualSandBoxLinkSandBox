@@ -353,10 +353,13 @@ public class Serv
     }
     public void SendMessage(byte[] data)
     {
+        
         sendBuffer = data;
         if (!sendThread.IsAlive)
         {
             sendThread = new Thread(sendData);
+            sendThread.Start();
+            Debug.Log("Start Thread to send data");
         }
         else
         {
@@ -369,7 +372,11 @@ public class Serv
     {
         Debug.Log("Begin send data");
         localSocket.SendTo(sendBuffer, remoteEndPort);
-        Debug.Log("Achieve send");
+        Debug.Log("Achieve send" + remoteEndPort );
+        for (int i = 0; i < sendBuffer.Length; i++)
+        {
+            Debug.Log(sendBuffer[i]);
+        }
         sendThread.Abort();
        
     }

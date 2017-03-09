@@ -26,7 +26,7 @@ public class CarControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        CarId = 1;
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class CarControl : MonoBehaviour
                                             "speed", carSpeed,
                                             "easetype", iTween.EaseType.linear,
                                             "looktarget", carDestination));
-        Debug.Log("change car destination " +carDestination.gameObject.name);
+       // Debug.Log("change car destination " +carDestination.gameObject.name);
     }
 
 

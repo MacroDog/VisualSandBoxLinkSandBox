@@ -10560,6 +10560,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 254620291}
   - 114: {fileID: 254620290}
+  - 114: {fileID: 254620292}
   m_Layer: 0
   m_Name: carWayPoint (6)
   m_TagString: Untagged
@@ -10596,6 +10597,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 134927895}
   m_RootOrder: 6
+--- !u!114 &254620292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254620289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cb4557e3512324a95e874344a3ec22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CarWayID: 6
+  wayPoint:
+  - {fileID: 1618000134}
+  - {fileID: 2095984131}
+  - {fileID: 670733364}
+  Movie: {fileID: 15200000, guid: 93f494aa369090e428b4f436dae49974, type: 3}
 --- !u!1 &258468564
 GameObject:
   m_ObjectHideFlags: 0
@@ -13670,11 +13688,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
   m_PrefabInternal: {fileID: 345451267}
---- !u!224 &345905066 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1190292539}
 --- !u!4 &346084552 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400010, guid: caf5b14a3d572c749b4e7c6d20c3f7bd, type: 3}
@@ -16517,7 +16530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Carwaypoint:
   - {fileID: 1629888969}
-  - {fileID: 1952220155}
+  - {fileID: 0}
   Ways:
   - {fileID: 1649517851}
   - {fileID: 1439869245}
@@ -18103,7 +18116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1318890108}
-  - {fileID: 345905066}
+  - {fileID: 1186316587}
   - {fileID: 717913977}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -30839,10 +30852,10 @@ MonoBehaviour:
   - {fileID: 158657009}
   - {fileID: 1629888969}
   - {fileID: 1138464850}
-  - {fileID: 1952220155}
+  - {fileID: 0}
   - {fileID: 254620290}
   - {fileID: 323305731}
-  - {fileID: 1130866811}
+  - {fileID: 0}
   - {fileID: 1257279120}
   - {fileID: 68059124}
   - {fileID: 27929352}
@@ -36829,7 +36842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Carwaypoint:
-  - {fileID: 1952220155}
+  - {fileID: 0}
   - {fileID: 254620290}
   Ways:
   - {fileID: 423309818}
@@ -37457,7 +37470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Carwaypoint:
-  - {fileID: 1130866811}
+  - {fileID: 0}
   - {fileID: 658321837}
   Ways:
   - {fileID: 1115296659}
@@ -37832,8 +37845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Carwaypoint:
-  - {fileID: 1952220155}
-  - {fileID: 1130866811}
+  - {fileID: 0}
+  - {fileID: 0}
   Ways:
   - {fileID: 562910174}
   - {fileID: 221177078}
@@ -42253,13 +42266,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130866810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f78a1edb2540f04380570f3183a6f37, type: 3}
+  m_Script: {fileID: 11500000, guid: 28cb4557e3512324a95e874344a3ec22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CarWayID: 8
   wayPoint:
   - {fileID: 1879625890}
   - {fileID: 1010089534}
+  Movie: {fileID: 15200000, guid: ba852ec4065b0b74a88aa1e7fd049c3f, type: 3}
 --- !u!4 &1130866812
 Transform:
   m_ObjectHideFlags: 0
@@ -42560,7 +42574,7 @@ MonoBehaviour:
   - {fileID: 1764740389}
   - {fileID: 1393679958}
   - {fileID: 1778889190}
-  Movie: {fileID: 15200000, guid: 62fffb4586d2fa54d8a3827f982d6753, type: 3}
+  Movie: {fileID: 15200000, guid: 3d316529ac9e3194797cc7fd2fbfc4b5, type: 3}
 --- !u!4 &1138464851
 Transform:
   m_ObjectHideFlags: 0
@@ -43624,6 +43638,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: caf5b14a3d572c749b4e7c6d20c3f7bd, type: 3}
   m_IsPrefabParent: 0
+--- !u!224 &1186316587 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1190292539}
 --- !u!1001 &1190282927
 Prefab:
   m_ObjectHideFlags: 0
@@ -43725,103 +43744,99 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 464962009}
     m_Modifications:
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013235434500, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
+    - target: {fileID: 224000011336130926, guid: df0e58eaf2837ed4bb709e4f6f416e0f,
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1000012333053360, guid: df0e58eaf2837ed4bb709e4f6f416e0f, type: 2}
+    - target: {fileID: 1000013629143386, guid: df0e58eaf2837ed4bb709e4f6f416e0f, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014154730650, guid: df0e58eaf2837ed4bb709e4f6f416e0f, type: 2}
-      propertyPath: m_Name
-      value: PlayerScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df0e58eaf2837ed4bb709e4f6f416e0f, type: 2}
@@ -65736,7 +65751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Carwaypoint:
   - {fileID: 0}
-  - {fileID: 1952220155}
+  - {fileID: 0}
   Ways:
   - {fileID: 361097536}
   - {fileID: 39080637}
@@ -70379,7 +70394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Carwaypoint:
-  - {fileID: 1130866811}
+  - {fileID: 0}
   - {fileID: 27929352}
   Ways:
   - {fileID: 962471232}
@@ -73572,13 +73587,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1952220154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f78a1edb2540f04380570f3183a6f37, type: 3}
+  m_Script: {fileID: 11500000, guid: 28cb4557e3512324a95e874344a3ec22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CarWayID: 5
   wayPoint:
   - {fileID: 992459395}
   - {fileID: 1019349414}
+  Movie: {fileID: 15200000, guid: c7bfc6815f0a89249a847e53a8076722, type: 3}
 --- !u!4 &1952220156
 Transform:
   m_ObjectHideFlags: 0
@@ -82938,7 +82954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Carwaypoint:
   - {fileID: 254620290}
-  - {fileID: 1130866811}
+  - {fileID: 0}
   Ways:
   - {fileID: 1494088993}
   - {fileID: 1446826084}
